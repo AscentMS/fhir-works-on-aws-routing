@@ -767,7 +767,7 @@ describe('SUCCESS Cases: Testing Batch with CRUD entries', () => {
 describe('ERROR Cases: Bundle not authorized', () => {
     test('An entry in Bundle request is not authorized', async () => {
         const authZ: Authorization = {
-            // eslint-disable-next-line @typescript-eslint/no-empty-function,@typescript-eslint/no-unused-vars
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             async isBundleRequestAuthorized(request) {
                 throw new UnauthorizedError('An entry within the Bundle is not authorized');
             },
@@ -778,9 +778,9 @@ describe('ERROR Cases: Bundle not authorized', () => {
             async verifyAccessToken(request) {
                 return {};
             },
-            // eslint-disable-next-line @typescript-eslint/no-empty-function,@typescript-eslint/no-unused-vars
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             async isWriteRequestAuthorized(request) {},
-            // eslint-disable-next-line @typescript-eslint/no-empty-function,@typescript-eslint/no-unused-vars
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             async isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest) {},
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             async getAllowedResourceTypesForOperation(request) {
@@ -832,11 +832,11 @@ describe('ERROR Cases: Bundle not authorized', () => {
             async verifyAccessToken(request) {
                 return {};
             },
-            // eslint-disable-next-line @typescript-eslint/no-empty-function,@typescript-eslint/no-unused-vars
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             async isBundleRequestAuthorized(request) {},
-            // eslint-disable-next-line @typescript-eslint/no-empty-function,@typescript-eslint/no-unused-vars
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             async isWriteRequestAuthorized(request) {},
-            // eslint-disable-next-line @typescript-eslint/no-empty-function,@typescript-eslint/no-unused-vars
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             async isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest) {},
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             async getAllowedResourceTypesForOperation(request) {

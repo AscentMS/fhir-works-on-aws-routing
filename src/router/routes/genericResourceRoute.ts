@@ -137,6 +137,7 @@ export default class GenericResourceRoute {
         }
 
         if (this.operations.includes('search-type')) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const handleSearch = async (res: express.Response, resourceType: string, searchParamQuery: any) => {
                 return this.handler.typeSearch(
                     resourceType,

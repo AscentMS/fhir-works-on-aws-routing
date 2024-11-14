@@ -11,6 +11,7 @@ import fhirV4Schema from './schemas/fhir.schema.v4.json';
 import fhirV3Schema from './schemas/fhir.schema.v3.json';
 
 export default class JsonSchemaValidator implements Validator {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private ajv: any;
 
     private readonly schemaId: string;
@@ -31,7 +32,7 @@ export default class JsonSchemaValidator implements Validator {
         this.ajv = ajv;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
     async validate(resource: any, params: { tenantId?: string; typeOperation?: TypeOperation } = {}): Promise<void> {
         const definitionName = resource.resourceType;
         if (!definitionName) {

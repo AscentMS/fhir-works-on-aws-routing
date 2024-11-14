@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
@@ -6,7 +7,7 @@
 
 import Ajv from 'ajv';
 import createError from 'http-errors';
-// @ts-ignore
+// @ts-expect-error - no type definition avaialable for ajv-errors.
 import ajvErrors from 'ajv-errors';
 
 const ajv = ajvErrors(new Ajv({ allErrors: true, jsonPointers: true }));
@@ -33,7 +34,7 @@ const queryParamsSchema = {
     required: ['patient'],
     additionalProperties: {
         not: true,
-        // eslint-disable-next-line no-template-curly-in-string
+         
         errorMessage: 'Invalid parameter: ${0#}',
     },
     errorMessage: {

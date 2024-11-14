@@ -65,6 +65,7 @@ const config = (stubs: {
     },
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const configFn = (overrideStubs?: any) => {
     return config({ ...fwoaStubs, ...overrideStubs });
 };

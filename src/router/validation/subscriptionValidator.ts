@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
  */
 
 import Ajv from 'ajv';
-// @ts-ignore
+// @ts-expect-error - no types available for 'ajv-errors'
 import ajvErrors from 'ajv-errors';
 
 import { isEmpty, groupBy } from 'lodash';

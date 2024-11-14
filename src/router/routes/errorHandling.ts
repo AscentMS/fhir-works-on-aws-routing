@@ -16,6 +16,7 @@ import {
 import OperationsGenerator from '../operationsGenerator';
 
 export const applicationErrorMapper = (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     err: any,
     req: express.Request,
     res: express.Response,
@@ -67,6 +68,7 @@ const statusToOutcome: Record<number, { severity: IssueSeverity; code: IssueCode
     500: { severity: 'error', code: 'exception' },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const httpErrorHandler = (err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (err instanceof createError.TooManyRequests) {
         const RETRY_AGAIN_IN_SECONDS = 15 * 60; // 15 Minutes
@@ -82,6 +84,7 @@ export const httpErrorHandler = (err: any, req: express.Request, res: express.Re
 };
 
 export const unknownErrorHandler = (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     err: any,
     req: express.Request,
     res: express.Response,

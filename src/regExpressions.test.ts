@@ -25,7 +25,7 @@ describe('captureFullUrlParts', () => {
         ];
 
         for (let i = 0; i < expectedMatch.length; i += 1) {
-            // @ts-ignore
+            // @ts-expect-error actualMatch may be null
             expect(actualMatch[i]).toEqual(expectedMatch[i]);
         }
     });
@@ -43,7 +43,7 @@ describe('captureFullUrlParts', () => {
             undefined,
         ];
 
-        // @ts-ignore
+        // @ts-expect-error actualMatch may be null
         expect([...actualMatch]).toEqual([...expectedMatch]);
     });
 
@@ -53,8 +53,7 @@ describe('captureFullUrlParts', () => {
         const actualMatch = url.match(captureFullUrlParts);
 
         const expectedMatch = ['Observation/123', undefined, 'Observation', '123', undefined];
-
-        // @ts-ignore
+        
         expect([...actualMatch]).toEqual([...expectedMatch]);
     });
 
@@ -79,7 +78,7 @@ describe('captureResourceTypeRegExp', () => {
         const expectedMatch = ['Patient/12345678', 'Patient'];
 
         for (let i = 0; i < expectedMatch.length; i += 1) {
-            // @ts-ignore
+            // @ts-expect-error actualMatch may be null
             expect(actualMatch[i]).toEqual(expectedMatch[i]);
         }
     });
@@ -97,7 +96,7 @@ describe('captureResourceIdRegExp', () => {
         const expectedMatch = ['Patient/12345678', 'Patient'];
 
         for (let i = 0; i < expectedMatch.length; i += 1) {
-            // @ts-ignore
+            // @ts-expect-error actualMatch may be null
             expect(actualMatch[i]).toEqual(expectedMatch[i]);
         }
     });

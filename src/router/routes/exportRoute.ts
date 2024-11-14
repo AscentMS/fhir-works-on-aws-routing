@@ -2,8 +2,6 @@
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
  */
-
-/* eslint-disable no-underscore-dangle */
 import express, { Router } from 'express';
 import {
     Authorization,
@@ -20,7 +18,7 @@ import ExportRouteHelper from './exportRouteHelper';
 export default class ExportRoute {
     readonly router: Router;
 
-    private exportHandler: any;
+    private exportHandler: ExportHandler;
 
     private fhirVersion: FhirVersion;
 
@@ -99,7 +97,7 @@ export default class ExportRoute {
                         transactionTime: response.transactionTime,
                         request: ExportRouteHelper.getExportUrl(
                             res.locals.serverUrl,
-                            response.exportType,
+                            response.exportType!,
                             queryParams,
                             groupId,
                         ),

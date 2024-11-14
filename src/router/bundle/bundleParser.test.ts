@@ -49,8 +49,8 @@ describe('parseResource', () => {
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
                 // CHECK
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual('We currently do not support PATCH entries in the Bundle');
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual('We currently do not support PATCH entries in the Bundle');
             }
         });
         test('Bundle has a Transaction request', async () => {
@@ -75,8 +75,8 @@ describe('parseResource', () => {
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
                 // CHECK
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual('We currently do not support Bundle entries in the Bundle');
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual('We currently do not support Bundle entries in the Bundle');
             }
         });
 
@@ -107,8 +107,8 @@ describe('parseResource', () => {
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
                 // CHECK
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual('Reference URL exceeds length limit.');
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual('Reference URL exceeds length limit.');
             }
         });
 
@@ -140,8 +140,8 @@ describe('parseResource', () => {
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
                 // CHECK
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual('Entry full URL length exceeds length limit.');
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual('Entry full URL length exceeds length limit.');
             }
         });
 
@@ -165,8 +165,8 @@ describe('parseResource', () => {
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
                 // CHECK
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual('We currently do not support V_READ entries in the Bundle');
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual('We currently do not support V_READ entries in the Bundle');
             }
         });
         test('Bundle has a search type request', async () => {
@@ -189,8 +189,8 @@ describe('parseResource', () => {
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
                 // CHECK
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual('We currently do not support SEARCH entries in the Bundle');
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual('We currently do not support SEARCH entries in the Bundle');
             }
         });
         test('Bundle has a search system request', async () => {
@@ -213,8 +213,8 @@ describe('parseResource', () => {
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
                 // CHECK
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual('We currently do not support SEARCH entries in the Bundle');
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual('We currently do not support SEARCH entries in the Bundle');
             }
         });
         test('Bundle has a history instance request', async () => {
@@ -237,8 +237,8 @@ describe('parseResource', () => {
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
                 // CHECK
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual('We currently do not support HISTORY entries in the Bundle');
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual('We currently do not support HISTORY entries in the Bundle');
             }
         });
         test('Bundle has a history type request', async () => {
@@ -261,8 +261,8 @@ describe('parseResource', () => {
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
                 // CHECK
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual('We currently do not support HISTORY entries in the Bundle');
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual('We currently do not support HISTORY entries in the Bundle');
             }
         });
         test('Bundle has a history system request', async () => {
@@ -285,8 +285,8 @@ describe('parseResource', () => {
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
                 // CHECK
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual('We currently do not support HISTORY entries in the Bundle');
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual('We currently do not support HISTORY entries in the Bundle');
             }
         });
     });
@@ -1139,8 +1139,8 @@ describe('parseResource', () => {
                 });
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual(
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual(
                     "This entry refer to a resource that does not exist on this server. Entry is referring to 'Patient/1234'",
                 );
             }
@@ -1296,8 +1296,8 @@ describe('parseResource', () => {
             try {
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual(
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual(
                     'This entry\'s reference is not recognized. Entry\'s reference is: invalidReferenceFormat . Valid format includes "<url>/resourceType/id" or "<urn:uuid:|urn:oid:><id>',
                 );
             }
@@ -1548,8 +1548,8 @@ describe('parseResource', () => {
             try {
                 await BundleParser.parseResource(bundleRequestJson, DynamoDbDataService, serverUrl);
             } catch (e) {
-                expect((e as any).name).toEqual('Error');
-                expect((e as any).message).toEqual(
+                expect((e as Error).name).toEqual('Error');
+                expect((e as Error).message).toEqual(
                     'This entry refer to a contained resource that does not exist. Contained resource is referring to #referral',
                 );
             }

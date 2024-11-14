@@ -9,6 +9,7 @@ import { validateXHTMLResource } from '../handlers/utils';
 export async function validateResource(
     validators: Validator[],
     resourceType: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resource: any,
     params: { tenantId?: string; typeOperation?: TypeOperation } = {},
 ): Promise<void> {
@@ -19,7 +20,6 @@ export async function validateResource(
         throw new InvalidResourceError(`invalid resource html present in ${resourceType}`);
     }
     for (let i = 0; i < validators.length; i += 1) {
-        // eslint-disable-next-line no-await-in-loop
         await validators[i].validate(resource, params);
     }
 }

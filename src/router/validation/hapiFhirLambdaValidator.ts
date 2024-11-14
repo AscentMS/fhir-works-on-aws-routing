@@ -34,7 +34,7 @@ export default class HapiFhirLambdaValidator implements Validator {
         });
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
     async validate(resource: any, params: { tenantId?: string; typeOperation?: TypeOperation } = {}): Promise<void> {
         const lambdaParams: InvokeCommandInput = {
             FunctionName: this.hapiValidatorLambdaArn,

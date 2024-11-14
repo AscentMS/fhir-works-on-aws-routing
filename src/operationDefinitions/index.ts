@@ -19,6 +19,7 @@ export const initializeOperationRegistry = (configHandler: ConfigHandler) => {
     if (
         compiledImplementationGuides &&
         compiledImplementationGuides.find(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (x: any) => x.resourceType === 'OperationDefinition' && x.url === USCoreDocRef.canonicalUrl,
         )
     ) {

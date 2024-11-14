@@ -7,8 +7,10 @@
 import { createHash } from 'crypto';
 import sanitizeHTML, { defaults } from 'sanitize-html';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const hash = (o: any): any => createHash('sha256').update(JSON.stringify(o)).digest('hex');
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const validateXHTMLResource = (resource: any): boolean => {
     // we want to ignore the text field as it requires unencoded html as per the FHIR spec
     // https://www.hl7.org/fhir/datatypes-definitions.html#HumanName.text (for example)

@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-/* eslint-disable class-methods-use-this */
 import {
     BatchReadWriteRequest,
     Bundle,
@@ -253,7 +253,7 @@ export default class BundleHandler implements BundleHandlerInterface {
                     entryResponse.resource = readResponse.value;
                 }
             }
-            // eslint-disable-next-line no-param-reassign
+             
             bundleServiceResponse.batchReadWriteResponses[index] = entryResponse;
         });
 

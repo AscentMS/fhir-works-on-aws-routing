@@ -12,6 +12,7 @@ import { ResourceCapabilityStatement } from './ResourceCapabilityInterface';
 export class FHIRStructureDefinitionRegistry {
     private readonly capabilityStatement: ResourceCapabilityStatement;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(compiledImplementationGuides?: any[]) {
         let compiledStructureDefinitions: FhirStructureDefinition[] = [];
 

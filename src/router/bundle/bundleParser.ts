@@ -1,9 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
  */
-
-/* eslint-disable no-restricted-syntax */
 import { v4 } from 'uuid';
 import { flatten } from 'flat';
 import get from 'lodash/get';
@@ -239,20 +238,21 @@ export default class BundleParser {
                                     parsedVid = parts[parts.length - 1];
                                     vidWithHistory = true;
                                 }
-                                // eslint-disable-next-line no-await-in-loop
+                                 
                                 await dataService.vReadResource({
                                     resourceType: reference.resourceType,
                                     id: reference.id,
                                     vid: parsedVid,
                                 });
                             } else {
-                                // eslint-disable-next-line no-await-in-loop
+                                 
                                 await dataService.readResource({
                                     resourceType: reference.resourceType,
                                     id: reference.id,
                                 });
                             }
                         } catch (e) {
+                            console.error(e);
                             throw new Error(
                                 `This entry refer to a resource that does not exist on this server. Entry is referring to '${reference.resourceType}/${reference.id}'`,
                             );
@@ -281,7 +281,7 @@ export default class BundleParser {
             }
         });
 
-        // @ts-ignore
+        // @ts-expect-error - undefined not handled.
         const orderedAllRequests: BatchReadWriteRequest[] = orderedBundleEntriesId.map((id) => {
             return allRequests.find((request) => {
                 return id === request.id;
@@ -362,7 +362,7 @@ export default class BundleParser {
                         throw new Error(`Entry full URL length exceeds length limit.`);
                     }
                     if (entry.fullUrl.match(captureFullUrlParts)) {
-                        // eslint-disable-next-line prefer-destructuring
+                         
                         rootUrl = entry.fullUrl.match(captureFullUrlParts)[1];
                     }
                 }
@@ -428,7 +428,7 @@ export default class BundleParser {
             }
             // IDs are in the form <resource-type>/id
             // exp. Patient/abcd1234
-            // eslint-disable-next-line prefer-destructuring
+             
             id = match[1];
         }
 
@@ -459,7 +459,7 @@ export default class BundleParser {
             }
             // IDs are in the form <resource-type>/id
             // exp. Patient/abcd1234
-            // eslint-disable-next-line prefer-destructuring
+             
             resourceType = match[1];
         }
         return resourceType;

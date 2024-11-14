@@ -5,7 +5,9 @@
 
 import { FhirVersion, ProductInfo } from '@ascentms/fhir-works-on-aws-interface';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function makeStatement(rest: any, productInfo: ProductInfo, url: string, fhirVersion: FhirVersion) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const cap: any = {
         resourceType: 'CapabilityStatement',
         name: productInfo.productMachineName ?? 'FhirServerCapabilityStatement',

@@ -18,6 +18,7 @@ const getTenantIdFromAudString = (audClaim: string, baseUrl: string): string | u
     return undefined;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getTenantIdFromAudClaim = (audClaim: any, baseUrl: string): string | undefined => {
     if (!audClaim) {
         return undefined;
@@ -34,6 +35,7 @@ const getTenantIdFromAudClaim = (audClaim: any, baseUrl: string): string | undef
 
     const tenantIds = audClaimAsArray
         .map((aud: string) => getTenantIdFromAudString(aud, baseUrl))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .filter((aud: any) => aud !== undefined);
 
     const uniqTenantIds = uniq(tenantIds);
@@ -57,6 +59,7 @@ export const setTenantIdMiddleware: (
 ) => (req: express.Request, res: express.Response, next: express.NextFunction) => void = (fhirConfig: FhirConfig) => {
     return RouteHelper.wrapAsync(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
         // Find tenantId from custom claim and aud claim
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
         const tenantIdFromCustomClaim = get(res.locals.userIdentity, fhirConfig.multiTenancyConfig?.tenantIdClaimPath!);
         const tenantIdFromAudClaim = getTenantIdFromAudClaim(res.locals.userIdentity.aud, fhirConfig.server.url);
 

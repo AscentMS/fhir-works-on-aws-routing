@@ -24,6 +24,7 @@ export default class RootHandler {
     }
 
     async globalSearch(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         queryParams: any,
         userIdentity: KeyValueMap,
         requestContext: RequestContext,
@@ -47,6 +48,7 @@ export default class RootHandler {
     }
 
     async globalHistory(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         queryParams: any,
         userIdentity: KeyValueMap,
         requestContext: RequestContext,

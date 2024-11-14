@@ -38,7 +38,8 @@ export class RoutingImplementationGuides implements ImplementationGuides {
      *
      * @param resources - an array of FHIR resources. See: https://www.hl7.org/fhir/profiling.html
      */
-    // eslint-disable-next-line class-methods-use-this
+    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async compile(resources: any[]): Promise<any> {
         const validDefinitions: (FhirStructureDefinition | FhirOperationDefinition)[] = [];
         resources.forEach((s) => {
@@ -79,6 +80,7 @@ export class RoutingImplementationGuides implements ImplementationGuides {
         });
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private static isFhirStructureDefinition(x: any): x is FhirStructureDefinition {
         return (
             typeof x === 'object' &&
@@ -92,6 +94,7 @@ export class RoutingImplementationGuides implements ImplementationGuides {
         );
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private static isFhirOperationDefinition(x: any): x is FhirOperationDefinition {
         return (
             typeof x === 'object' &&

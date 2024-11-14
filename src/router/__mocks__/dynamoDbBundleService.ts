@@ -1,5 +1,5 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+ 
+ 
 import {
     Bundle,
     BatchReadWriteResponse,
