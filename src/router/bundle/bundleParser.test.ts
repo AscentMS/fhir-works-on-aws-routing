@@ -3,8 +3,8 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { BatchReadWriteRequest, clone, ResourceNotFoundError } from 'fhir-works-on-aws-interface';
-import { ReadResourceRequest } from 'fhir-works-on-aws-interface/lib/persistence';
+import { BatchReadWriteRequest, clone, ResourceNotFoundError } from '@ascentms/fhir-works-on-aws-interface';
+import { ReadResourceRequest } from '@ascentms/fhir-works-on-aws-interface/lib/persistence';
 import DynamoDbDataService from '../__mocks__/dynamoDbDataService';
 import BundleParser from './bundleParser';
 import { resourceTypeWithUuidRegExp, uuidRegExp } from '../../regExpressions';
@@ -880,29 +880,29 @@ describe('parseResource', () => {
             expect(batchReadWriteRequest[0]).toMatchInlineSnapshot(
                 { id: expect.stringMatching(uuidRegExp) },
                 `
-                Object {
+                {
                   "fullUrl": "",
                   "id": StringMatching /\\\\w\\{8\\}-\\\\w\\{4\\}-\\\\w\\{4\\}-\\\\w\\{4\\}-\\\\w\\{12\\}/,
                   "operation": "create",
-                  "resource": Object {
-                    "code": Object {
-                      "coding": Array [
-                        Object {
+                  "resource": {
+                    "code": {
+                      "coding": [
+                        {
                           "code": "LQA",
                           "display": "display value for LQA",
                         },
                       ],
                     },
-                    "device": Object {
+                    "device": {
                       "reference": "Device/222/_history/7",
                     },
                     "effectiveDateTime": "2021-01-09T20:00:06Z",
                     "resourceType": "Observation",
                     "status": "final",
-                    "subject": Object {
+                    "subject": {
                       "reference": "Patient/111",
                     },
-                    "valueQuantity": Object {
+                    "valueQuantity": {
                       "unit": "cm",
                       "value": 170,
                     },
@@ -959,29 +959,29 @@ describe('parseResource', () => {
             expect(batchReadWriteRequest[0]).toMatchInlineSnapshot(
                 { id: expect.stringMatching(uuidRegExp) },
                 `
-                Object {
+                {
                   "fullUrl": "",
                   "id": StringMatching /\\\\w\\{8\\}-\\\\w\\{4\\}-\\\\w\\{4\\}-\\\\w\\{4\\}-\\\\w\\{12\\}/,
                   "operation": "create",
-                  "resource": Object {
-                    "code": Object {
-                      "coding": Array [
-                        Object {
+                  "resource": {
+                    "code": {
+                      "coding": [
+                        {
                           "code": "LQA",
                           "display": "display value for LQA",
                         },
                       ],
                     },
-                    "device": Object {
+                    "device": {
                       "reference": "Device/222",
                     },
                     "effectiveDateTime": "2021-01-09T20:00:06Z",
                     "resourceType": "Observation",
                     "status": "final",
-                    "subject": Object {
+                    "subject": {
                       "reference": "Patient/111",
                     },
-                    "valueQuantity": Object {
+                    "valueQuantity": {
                       "unit": "cm",
                       "value": 170,
                     },

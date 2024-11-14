@@ -3,9 +3,8 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { InvalidResourceError, TypeOperation, Validator } from 'fhir-works-on-aws-interface';
-import { Lambda } from 'aws-sdk';
-import AWS from '../../AWS';
+import { InvalidResourceError, TypeOperation, Validator } from '@ascentms/fhir-works-on-aws-interface';
+import { InvokeCommand, InvokeCommandInput, LambdaClient } from '@aws-sdk/client-lambda';
 import getComponentLogger from '../../loggerBuilder';
 
 interface ErrorMessage {
@@ -24,26 +23,27 @@ const logger = getComponentLogger();
 export default class HapiFhirLambdaValidator implements Validator {
     private hapiValidatorLambdaArn: string;
 
-    private lambdaClient: Lambda;
+    private lambdaClient: LambdaClient;
 
     constructor(hapiValidatorLambdaArn: string) {
         this.hapiValidatorLambdaArn = hapiValidatorLambdaArn;
-        this.lambdaClient = new AWS.Lambda({
-            httpOptions: {
-                timeout: TIMEOUT_MILLISECONDS,
+        this.lambdaClient = new LambdaClient({
+            requestHandler: {
+                requestTimeout: TIMEOUT_MILLISECONDS,
             },
         });
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async validate(resource: any, params: { tenantId?: string; typeOperation?: TypeOperation } = {}): Promise<void> {
-        const lambdaParams = {
+        const lambdaParams: InvokeCommandInput = {
             FunctionName: this.hapiValidatorLambdaArn,
             InvocationType: 'RequestResponse',
             Payload: JSON.stringify(JSON.stringify(resource)),
         };
 
-        const lambdaResponse = await this.lambdaClient.invoke(lambdaParams).promise();
+        const lambdaInvokeCommand = new InvokeCommand(lambdaParams);
+        const lambdaResponse = await this.lambdaClient.send(lambdaInvokeCommand);
 
         if (lambdaResponse.FunctionError) {
             // this means that the lambda function crashed, not necessarily that the resource is invalid.
@@ -52,7 +52,15 @@ export default class HapiFhirLambdaValidator implements Validator {
             throw new Error(msg);
         }
         // response payload is always a string. the Payload type is also used for invoke parameters
-        const hapiValidatorResponse = JSON.parse(lambdaResponse.Payload as string) as HapiValidatorResponse;
+        if (!lambdaResponse.Payload) {
+            const msg = 'No payload returned from lambda function';
+            logger.error(msg, lambdaResponse);
+            throw new Error(msg);
+        }
+
+        const responsePayload = await lambdaResponse.Payload.transformToString();
+
+        const hapiValidatorResponse = JSON.parse(responsePayload) as HapiValidatorResponse;
         if (hapiValidatorResponse.successful) {
             return;
         }

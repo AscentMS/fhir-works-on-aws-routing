@@ -6,7 +6,7 @@
 import { RoutingImplementationGuides } from './index';
 
 describe('RoutingImplementationGuides', () => {
-    describe(`compile`, async () => {
+    describe(`compile`, () => {
         test(`valid input`, async () => {
             const compiled = new RoutingImplementationGuides().compile([
                 {
@@ -50,8 +50,8 @@ describe('RoutingImplementationGuides', () => {
             ]);
 
             await expect(compiled).resolves.toMatchInlineSnapshot(`
-                        Array [
-                          Object {
+                        [
+                          {
                             "baseDefinition": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization",
                             "description": "This profile builds on the USCoreOrganization Profile. It includes additional constraints relevant for the use cases addressed by this IG.",
                             "name": "CARINBBOrganization",
@@ -59,7 +59,7 @@ describe('RoutingImplementationGuides', () => {
                             "type": "Organization",
                             "url": "http://hl7.org/fhir/us/carin/StructureDefinition/carin-bb-organization",
                           },
-                          Object {
+                          {
                             "description": "This operation is used to return all the references to documents related to a patient...",
                             "name": "USCoreFetchDocumentReferences",
                             "resourceType": "OperationDefinition",
@@ -75,7 +75,7 @@ describe('RoutingImplementationGuides', () => {
                     foo: 'bar',
                 },
             ]);
-            await expect(compiled).rejects.toThrowError();
+            await expect(compiled).rejects.toThrow();
         });
     });
 });

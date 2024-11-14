@@ -9,7 +9,7 @@ import ajvErrors from 'ajv-errors';
 
 import { isEmpty, groupBy } from 'lodash';
 
-import { InvalidResourceError, Validator, Search, Persistence, TypeOperation } from 'fhir-works-on-aws-interface';
+import { InvalidResourceError, Validator, Search, Persistence, TypeOperation } from '@ascentms/fhir-works-on-aws-interface';
 import subscriptionSchema from './subscriptionSchema.json';
 
 export interface SubscriptionEndpoint {

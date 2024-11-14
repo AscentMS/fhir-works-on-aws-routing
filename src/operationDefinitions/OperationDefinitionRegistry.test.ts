@@ -67,10 +67,10 @@ describe('OperationDefinitionRegistry', () => {
         );
 
         expect(operationDefinitionRegistry.getCapabilities()).toMatchInlineSnapshot(`
-            Object {
-              "Patient": Object {
-                "operation": Array [
-                  Object {
+            {
+              "Patient": {
+                "operation": [
+                  {
                     "definition": "https://fwoa.com/operation/fakeOperation",
                     "documentation": "The documentation for the fakeOperation",
                     "name": "fakeOperation",

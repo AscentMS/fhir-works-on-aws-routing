@@ -11,7 +11,7 @@ import {
     ExportType,
     FhirVersion,
     InitiateExportRequest,
-} from 'fhir-works-on-aws-interface';
+} from '@ascentms/fhir-works-on-aws-interface';
 import createHttpError from 'http-errors';
 import RouteHelper from './routeHelper';
 import ExportHandler from '../handlers/exportHandler';

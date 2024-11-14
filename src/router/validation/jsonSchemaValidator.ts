@@ -6,7 +6,7 @@ import Ajv from 'ajv';
 import schemaDraft06 from 'ajv/lib/refs/json-schema-draft-06.json';
 import schemaDraft04 from 'ajv/lib/refs/json-schema-draft-04.json';
 
-import { FhirVersion, InvalidResourceError, TypeOperation, Validator } from 'fhir-works-on-aws-interface';
+import { FhirVersion, InvalidResourceError, TypeOperation, Validator } from '@ascentms/fhir-works-on-aws-interface';
 import fhirV4Schema from './schemas/fhir.schema.v4.json';
 import fhirV3Schema from './schemas/fhir.schema.v3.json';
 

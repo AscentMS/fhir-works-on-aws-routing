@@ -4,8 +4,8 @@
  */
 
 /* eslint-disable no-restricted-syntax */
-import uuidv4 from 'uuid/v4';
-import flatten from 'flat';
+import { v4 } from 'uuid';
+import { flatten } from 'flat';
 import get from 'lodash/get';
 import set from 'lodash/set';
 import {
@@ -15,7 +15,7 @@ import {
     TypeOperation,
     SystemOperation,
     getRequestInformation,
-} from 'fhir-works-on-aws-interface';
+} from '@ascentms/fhir-works-on-aws-interface';
 
 import { MAX_BUNDLE_ENTRY_URL_LENGTH, MAX_REFERENCE_URL_LENGTH } from '../../constants';
 
@@ -412,7 +412,7 @@ export default class BundleParser {
     private static getResourceId(entry: any, operation: TypeOperation | SystemOperation) {
         let id = '';
         if (operation === 'create') {
-            id = uuidv4();
+            id = v4();
         } else if (operation === 'update' || operation === 'patch') {
             id = entry.resource.id;
         } else if (

@@ -9,7 +9,7 @@ import { convertDocRefParamsToSearchParams } from './convertDocRefParamsToSearch
 describe('docRefParamsToSearchParams', () => {
     test('minimal params ', () => {
         expect(convertDocRefParamsToSearchParams({ patient: 'Patient/1' })).toMatchInlineSnapshot(`
-            Object {
+            {
               "_count": "1",
               "_sort": "-period,-date",
               "patient": "Patient/1",
@@ -30,9 +30,9 @@ describe('docRefParamsToSearchParams', () => {
                 onDemand: false,
             }),
         ).toMatchInlineSnapshot(`
-            Object {
+            {
               "patient": "Patient/1",
-              "period": Array [
+              "period": [
                 "ge1990-10-10",
                 "le1995-10-10",
               ],
@@ -48,7 +48,7 @@ describe('docRefParamsToSearchParams', () => {
                 onDemand: true,
             }),
         ).toMatchInlineSnapshot(`
-            Object {
+            {
               "_count": "0",
             }
         `);
@@ -61,9 +61,9 @@ describe('docRefParamsToSearchParams', () => {
                 start: '1990',
             }),
         ).toMatchInlineSnapshot(`
-            Object {
+            {
               "patient": "Patient/1",
-              "period": Array [
+              "period": [
                 "ge1990",
               ],
               "type": "http://loinc.org|34133-9",
@@ -78,9 +78,9 @@ describe('docRefParamsToSearchParams', () => {
                 end: '2000',
             }),
         ).toMatchInlineSnapshot(`
-            Object {
+            {
               "patient": "Patient/1",
-              "period": Array [
+              "period": [
                 "le2000",
               ],
               "type": "http://loinc.org|34133-9",

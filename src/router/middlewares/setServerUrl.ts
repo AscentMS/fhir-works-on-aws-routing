@@ -5,7 +5,7 @@
  *
  */
 
-import { FhirConfig } from 'fhir-works-on-aws-interface';
+import { FhirConfig } from '@ascentms/fhir-works-on-aws-interface';
 import express from 'express';
 import RouteHelper from '../routes/routeHelper';
 

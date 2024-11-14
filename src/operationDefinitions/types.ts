@@ -4,7 +4,7 @@
  */
 
 import { Router } from 'express';
-import { SystemOperation, TypeOperation } from 'fhir-works-on-aws-interface';
+import { SystemOperation, TypeOperation } from '@ascentms/fhir-works-on-aws-interface';
 import ResourceHandler from '../router/handlers/resourceHandler';
 
 export interface OperationDefinitionImplementation {

@@ -17,7 +17,7 @@ describe('parseQueryParams', () => {
                     'on-demand': 'true',
                 }),
             ).toMatchInlineSnapshot(`
-                Object {
+                {
                   "end": "2000",
                   "onDemand": true,
                   "patient": "patient/111",
@@ -33,7 +33,7 @@ describe('parseQueryParams', () => {
                     start: '1990',
                 }),
             ).toMatchInlineSnapshot(`
-                Object {
+                {
                   "patient": "patient/111",
                   "start": "1990",
                 }
@@ -46,7 +46,7 @@ describe('parseQueryParams', () => {
                     patient: 'patient/111',
                 }),
             ).toMatchInlineSnapshot(`
-                Object {
+                {
                   "patient": "patient/111",
                 }
             `);
@@ -57,7 +57,7 @@ describe('parseQueryParams', () => {
         test('unknown param', () => {
             expect(() =>
                 parseQueryParams({ patient: 'Patient/111', someUnknownParam: 1 }),
-            ).toThrowErrorMatchingInlineSnapshot(`"params/someUnknownParam Invalid parameter: \\"someUnknownParam\\""`);
+            ).toThrowErrorMatchingInlineSnapshot(`"params/someUnknownParam Invalid parameter: \"someUnknownParam\""`);
         });
 
         test('missing patient', () => {
@@ -94,7 +94,7 @@ describe('parsePostParams', () => {
                     ],
                 }),
             ).toMatchInlineSnapshot(`
-                Object {
+                {
                   "patient": "Patient/123",
                 }
             `);
@@ -134,12 +134,12 @@ describe('parsePostParams', () => {
                     ],
                 }),
             ).toMatchInlineSnapshot(`
-                Object {
+                {
                   "end": "2000",
                   "onDemand": true,
                   "patient": "Patient/123",
                   "start": "1990",
-                  "type": Object {
+                  "type": {
                     "code": "code",
                     "system": "http://example.org",
                   },
@@ -167,7 +167,7 @@ describe('parsePostParams', () => {
                     ],
                 }),
             ).toMatchInlineSnapshot(`
-                Object {
+                {
                   "end": "2000",
                   "patient": "Patient/123",
                   "start": "1990",

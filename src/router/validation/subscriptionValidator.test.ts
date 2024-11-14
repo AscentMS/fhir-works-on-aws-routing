@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { InvalidResourceError, Search, Persistence } from 'fhir-works-on-aws-interface';
+import { InvalidResourceError, Search, Persistence } from '@ascentms/fhir-works-on-aws-interface';
 import ElasticSearchService from '../__mocks__/elasticSearchService';
 import DynamoDbDataService from '../__mocks__/dynamoDbDataService';
 import SubscriptionValidator, { SubscriptionEndpoint } from './subscriptionValidator';

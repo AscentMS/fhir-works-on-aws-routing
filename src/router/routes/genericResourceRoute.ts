@@ -4,7 +4,7 @@
  */
 
 import express, { Router } from 'express';
-import { Authorization, TypeOperation } from 'fhir-works-on-aws-interface';
+import { Authorization, TypeOperation } from '@ascentms/fhir-works-on-aws-interface';
 import createError from 'http-errors';
 import { isEmpty, mergeWith } from 'lodash';
 import CrudHandlerInterface from '../handlers/CrudHandlerInterface';

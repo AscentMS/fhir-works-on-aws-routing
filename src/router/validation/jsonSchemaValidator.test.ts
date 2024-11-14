@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { InvalidResourceError } from 'fhir-works-on-aws-interface';
+import { InvalidResourceError } from '@ascentms/fhir-works-on-aws-interface';
 import JsonSchemaValidator from './jsonSchemaValidator';
 import validPatient from '../../../sampleData/validV4Patient.json';
 import invalidPatient from '../../../sampleData/invalidV4Patient.json';

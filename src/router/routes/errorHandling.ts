@@ -12,7 +12,7 @@ import {
     isResourceConflictError,
     isBadRequestError,
     isMethodNotAllowed,
-} from 'fhir-works-on-aws-interface';
+} from '@ascentms/fhir-works-on-aws-interface';
 import OperationsGenerator from '../operationsGenerator';
 
 export const applicationErrorMapper = (

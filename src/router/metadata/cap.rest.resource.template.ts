@@ -9,7 +9,7 @@ import {
     SearchCapabilityStatement,
     SearchCapabilities,
     Resource,
-} from 'fhir-works-on-aws-interface';
+} from '@ascentms/fhir-works-on-aws-interface';
 import { ResourceCapabilityStatement, ResourceCapability } from '../../registry/ResourceCapabilityInterface';
 import {
     OperationCapability,

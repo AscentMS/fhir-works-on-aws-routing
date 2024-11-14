@@ -7,7 +7,7 @@ import {
     Persistence,
     Search,
     stubs as fwoaStubs,
-} from 'fhir-works-on-aws-interface';
+} from '@ascentms/fhir-works-on-aws-interface';
 
 const config = (stubs: {
     bundle: Bundle;

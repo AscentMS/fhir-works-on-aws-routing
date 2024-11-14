@@ -4,7 +4,7 @@
  *
  */
 
-import { FhirConfig, UnauthorizedError } from 'fhir-works-on-aws-interface';
+import { FhirConfig, UnauthorizedError } from '@ascentms/fhir-works-on-aws-interface';
 import express from 'express';
 import { setTenantIdMiddleware } from './setTenantId';
 

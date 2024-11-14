@@ -3,8 +3,8 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { stubs, Persistence } from 'fhir-works-on-aws-interface';
-import each from 'jest-each';
+import { stubs, Persistence } from '@ascentms/fhir-works-on-aws-interface';
+import { expect, jest, test } from '@jest/globals';
 import MetadataHandler from './metadataHandler';
 import { makeOperation } from './cap.rest.resource.template';
 import r4FhirConfigGeneric from '../../../sampleData/r4FhirConfigGeneric';
@@ -441,33 +441,33 @@ test('R4: FHIR Config V4 without search', async () => {
     expect(response.resource.rest[0].resource.length).toEqual(SUPPORTED_R4_RESOURCES.length);
     expect(response.resource.rest[0].security.cors).toBeFalsy();
     expect(response.resource.rest[0].resource[0]).toMatchInlineSnapshot(`
-        Object {
+        {
           "conditionalCreate": false,
           "conditionalDelete": "not-supported",
           "conditionalRead": "not-supported",
           "conditionalUpdate": false,
-          "interaction": Array [
-            Object {
+          "interaction": [
+            {
               "code": "create",
             },
-            Object {
+            {
               "code": "read",
             },
-            Object {
+            {
               "code": "update",
             },
-            Object {
+            {
               "code": "delete",
             },
-            Object {
+            {
               "code": "vread",
             },
-            Object {
+            {
               "code": "history-instance",
             },
           ],
-          "operation": Array [
-            Object {
+          "operation": [
+            {
               "definition": "https://fwoa.com/operation/fakeOperation",
               "documentation": "The documentation for the fakeOperation",
               "name": "fakeOperation",
@@ -565,12 +565,13 @@ test('R4: FHIR Config V4 no generic set-up & mix of STU3 & R4', async () => {
     expect(r4Validator.validate(response.resource)).resolves.toEqual(undefined);
 });
 
-each([
+test.each([
     ['Generic Resources: updateCreate = true', true, r4FhirConfigGeneric],
     ['Generic Resources: updateCreate = false', false, r4FhirConfigGeneric],
     ['Special Resources: updateCreate = true', true, r4FhirConfigNoGeneric],
     ['Special Resources: updateCreate = false', false, r4FhirConfigNoGeneric],
-]).test('R4: FHIR Config with %s', async (testName: string, updateCreateSupported: boolean, fhirConfigBuilder: any) => {
+])
+('R4: FHIR Config with %s', async (testName: string, updateCreateSupported: boolean, fhirConfigBuilder: any) => {
     const persistence: Persistence = {
         ...stubs.persistence,
         updateCreateSupported,
@@ -597,8 +598,8 @@ test('R4: FHIR Config V4 with bulkDataAccess', async () => {
     const response = await metadataHandler.capabilities({ fhirVersion: '4.0.1', mode: 'full' });
 
     expect(response.resource.rest[0].operation).toMatchInlineSnapshot(`
-        Array [
-          Object {
+        [
+          {
             "definition": "http://hl7.org/fhir/uv/bulkdata/OperationDefinition/export",
             "documentation": "This FHIR Operation initiates the asynchronous generation of data to which the client is authorized. For more information please refer here: http://hl7.org/fhir/uv/bulkdata/export/index.html#bulk-data-kick-off-request. After a bulk data request has been started, the client MAY poll the status URL provided in the Content-Location header. For more details please refer here: http://hl7.org/fhir/uv/bulkdata/export/index.html#bulk-data-status-request",
             "name": "export",
@@ -606,8 +607,8 @@ test('R4: FHIR Config V4 with bulkDataAccess', async () => {
         ]
     `);
     expect(response.resource.rest[0].resource.find((r: any) => r.type === 'Group')?.operation).toMatchInlineSnapshot(`
-        Array [
-          Object {
+        [
+          {
             "definition": "http://hl7.org/fhir/uv/bulkdata/OperationDefinition/group-export",
             "documentation": "This FHIR Operation initiates the asynchronous generation of data for a given Group. For more information please refer here: http://hl7.org/fhir/uv/bulkdata/export/index.html#endpoint---group-of-patients. After a bulk data request has been started, the client MAY poll the status URL provided in the Content-Location header. For more details please refer here: http://hl7.org/fhir/uv/bulkdata/export/index.html#bulk-data-status-request",
             "name": "group-export",

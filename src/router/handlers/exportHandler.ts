@@ -11,7 +11,7 @@ import {
     InitiateExportRequest,
     KeyValueMap,
     RequestContext,
-} from 'fhir-works-on-aws-interface';
+} from '@ascentms/fhir-works-on-aws-interface';
 import createError from 'http-errors';
 
 export default class ExportHandler {

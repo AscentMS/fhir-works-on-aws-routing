@@ -14,7 +14,7 @@ import {
     SmartStrategy,
     RequestContext,
     VerbType,
-} from 'fhir-works-on-aws-interface';
+} from '@ascentms/fhir-works-on-aws-interface';
 import GenericResourceRoute from './router/routes/genericResourceRoute';
 import ConfigHandler from './configHandler';
 import MetadataRoute from './router/routes/metadataRoute';

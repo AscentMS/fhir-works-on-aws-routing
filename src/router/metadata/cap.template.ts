@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { FhirVersion, ProductInfo } from 'fhir-works-on-aws-interface';
+import { FhirVersion, ProductInfo } from '@ascentms/fhir-works-on-aws-interface';
 
 export default function makeStatement(rest: any, productInfo: ProductInfo, url: string, fhirVersion: FhirVersion) {
     const cap: any = {

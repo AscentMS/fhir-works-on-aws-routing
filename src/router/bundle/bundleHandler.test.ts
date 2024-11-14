@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import uuidv4 from 'uuid/v4';
+import { v4 } from 'uuid';
 import {
     clone,
     GenericResource,
@@ -15,7 +15,7 @@ import {
     UnauthorizedError,
     AccessBulkDataJobRequest,
     RequestContext,
-} from 'fhir-works-on-aws-interface';
+} from '@ascentms/fhir-works-on-aws-interface';
 import createError from 'http-errors';
 import DynamoDbDataService from '../__mocks__/dynamoDbDataService';
 import DynamoDbBundleService from '../__mocks__/dynamoDbBundleService';
@@ -527,7 +527,7 @@ describe('ERROR Cases: Validation of Bundle request', () => {
             const readRequest = {
                 request: {
                     method: 'GET',
-                    url: `Patient/${uuidv4()}`,
+                    url: `Patient/${v4()}`,
                 },
             };
             bundleRequestJSON.entry.push(readRequest);
@@ -539,7 +539,7 @@ describe('ERROR Cases: Validation of Bundle request', () => {
                 dummyRequestContext,
                 dummyServerUrl,
             ),
-        ).rejects.toThrowError(
+        ).rejects.toThrow(
             new createError.BadRequest(
                 `Maximum number of entries for a Bundle is ${MAX_BUNDLE_ENTRIES}. There are currently ${bundleRequestJSON.entry.length} entries in this Bundle`,
             ),

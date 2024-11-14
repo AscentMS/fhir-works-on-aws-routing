@@ -4,7 +4,7 @@
  */
 
 import express, { Router } from 'express';
-import { CapabilityMode, FhirVersion } from 'fhir-works-on-aws-interface';
+import { CapabilityMode, FhirVersion } from '@ascentms/fhir-works-on-aws-interface';
 import MetadataHandler from '../metadata/metadataHandler';
 import ConfigHandler from '../../configHandler';
 import { FHIRStructureDefinitionRegistry } from '../../registry';

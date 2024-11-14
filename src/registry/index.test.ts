@@ -30,15 +30,15 @@ describe('FHIRStructureDefinitionRegistry', () => {
     test('getCapabilities snapshot', () => {
         expect(new FHIRStructureDefinitionRegistry(IGCompiledStructureDefinition).getCapabilities())
             .toMatchInlineSnapshot(`
-            Object {
-              "Coverage": Object {
-                "supportedProfile": Array [
+            {
+              "Coverage": {
+                "supportedProfile": [
                   "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-Coverage",
                 ],
                 "type": "Coverage",
               },
-              "Patient": Object {
-                "supportedProfile": Array [
+              "Patient": {
+                "supportedProfile": [
                   "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-Patient",
                 ],
                 "type": "Patient",
@@ -50,7 +50,7 @@ describe('FHIRStructureDefinitionRegistry', () => {
     test('getProfiles snapshot', () => {
         expect(new FHIRStructureDefinitionRegistry(IGCompiledStructureDefinition).getProfiles('Patient'))
             .toMatchInlineSnapshot(`
-            Array [
+            [
               "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-Patient",
             ]
         `);

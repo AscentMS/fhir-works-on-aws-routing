@@ -1,4 +1,4 @@
-import { SmartStrategy } from 'fhir-works-on-aws-interface';
+import { SmartStrategy } from '@ascentms/fhir-works-on-aws-interface';
 import { camelToSnakeCase, getWellKnownUriResponse } from './wellKnownUriHandler';
 
 describe('camelToSnakeCase', () => {

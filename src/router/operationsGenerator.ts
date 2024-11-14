@@ -1,4 +1,4 @@
-import { IssueSeverity, IssueCode } from 'fhir-works-on-aws-interface';
+import { IssueSeverity, IssueCode } from '@ascentms/fhir-works-on-aws-interface';
 
 /*
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
