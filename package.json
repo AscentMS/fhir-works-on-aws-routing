@@ -1,6 +1,6 @@
 {
   "name": "@ascentms/fhir-works-on-aws-routing",
-  "version": "6.6.2",
+  "version": "7.0.0",
   "description": "FHIR Works on AWS routing implementation",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
